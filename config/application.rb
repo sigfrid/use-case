@@ -1,1 +1,2 @@
-Dir[File.dirname(__FILE__) + '/../lib/*.rb'].each { |file| require file }
+require File.dirname(__FILE__) + '/../lib/use_case.rb'
+require File.dirname(__FILE__) + '/../lib/save_user.rb'
