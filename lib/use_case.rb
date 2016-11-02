@@ -17,7 +17,18 @@ module UseCase
     end
   end
 
+  def steps
+    self.class.steps_chain
+  end
+
   def call(params)
-    self.class.steps_chain.each { |next_step| self.send(next_step) }
+    current_outcome = Success[params]
+
+    while !steps.empty? do
+      next_step = steps.shift
+      current_outcome = current_outcome.bind(->(current_step_outcome) { self.send(next_step, current_step_outcome) })
+    end
+
+    current_outcome
   end
 end

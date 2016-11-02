@@ -1,13 +1,17 @@
 class SaveUser
   include UseCase
 
-  steps :validate, :persist
+  steps :process, :validate, :persist
 
-  def validate
-    p "validated"
+  def process(params)
+    Success[params]
   end
 
-  def persist
-    p "persisted"
+  def validate(params)
+    Failure[params]
+  end
+
+  def persist(params)
+    Success[params]
   end
 end
