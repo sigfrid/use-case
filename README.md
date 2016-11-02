@@ -9,12 +9,12 @@ Use Cases - POC
 ## Ideas
 
 - A UseCase understands `.call`.
-- A UseCase has a series of steps.
+- A UseCase has a series of _independent_ steps.
 - A Step can fail and __stop processing__.
 - A Step receives _params_ from its predecessor.
 - A step passes _params_ to its successor.
-
+- A step returns either a `Success` or a `Failure`.
 
 ## Api
 
-SaveUser.call
+SaveUser.call({})
