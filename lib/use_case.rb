@@ -17,11 +17,8 @@ module UseCase
     end
   end
 
-  def steps
-    self.class.steps_chain
-  end
-
   def call(params)
+    steps = self.class.steps_chain.clone
     current_outcome = Success[params]
 
     while !steps.empty? do
