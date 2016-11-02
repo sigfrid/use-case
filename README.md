@@ -23,6 +23,6 @@ SaveUser.call(params).on(
   end,
 
   failure: -> (error) do
-    p error
+    puts error
   end
 )
