@@ -17,4 +17,12 @@ Use Cases - POC
 
 ## Api
 
-SaveUser.call({})
+SaveUser.call(params).on(
+  success: ->  (user) do
+    puts user
+  end,
+
+  failure: -> (error) do
+    p error
+  end
+)

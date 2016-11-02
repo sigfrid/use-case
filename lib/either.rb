@@ -27,8 +27,8 @@ module Either
     success? ? f.call(value) : self
   end
 
-  def either(failure:, success:)
-    failure? ? failure.call(value) : success.call(value)
+  def on(success:, failure:)
+    success? ? success.call(value) : failure.call(value)
   end
 end
 

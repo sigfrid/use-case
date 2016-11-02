@@ -8,7 +8,7 @@ class SaveUser
   end
 
   def validate(params)
-    Failure[params]
+    Failure['not valid']
   end
 
   def persist(params)
