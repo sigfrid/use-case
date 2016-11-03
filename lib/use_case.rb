@@ -23,7 +23,13 @@ module UseCase
 
     while !steps.empty? do
       next_step = steps.shift
-      current_outcome = current_outcome.bind(->(current_step_outcome) { self.send(next_step, current_step_outcome) })
+
+      case next_step
+      when Symbol
+        current_outcome = current_outcome.bind(->(current_step_outcome) { self.send(next_step, current_step_outcome) })
+      when Class
+        current_outcome = current_outcome.bind(->(current_step_outcome) { next_step.send('call', current_step_outcome) })
+      end
     end
 
     current_outcome
